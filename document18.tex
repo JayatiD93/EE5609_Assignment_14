@@ -205,9 +205,9 @@ svn co https://github.com/gadepall/school/trunk/ncert/geometry/figs
 \section{Problem}
 In $R^3$, let $\alpha_1 = \myvec{1\\0\\1}$, $\alpha_2 = \myvec{0\\1\\-2}$ and $\alpha_3 = \myvec{-1\\-1\\0}$. Describe explicitly a linear functional f on $R^3$ such that $f(\alpha_1)=f(\alpha_2)=0$ but $f(\alpha_3)\neq 0$
 \section{Explanation}
-Let us consider $\alpha = \myvec{a\\b\\c}$ such that
+Let us consider $\vec{\alpha} = \myvec{a\\b\\c}$ such that
 \begin{align}
-\alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2 = \alpha\\
+\alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2 = \vec{\alpha}\\
 \alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2 = \myvec{a\\b\\c}
 \end{align}
 The coefficient matrix is :
@@ -216,18 +216,27 @@ A = \myvec{1 & 0 & -1\\0 & 1 & -1\\1 & -2 & 0}
 \end{align}
 So,
 \begin{align}
-\myvec{1 & 0 & -1\\0 & 1 & -1\\1 & -2 & 0}\myvec{x_1\\x_2\\x_3} = \myvec{a\\b\\c}
+A\vec{x}= \vec{\alpha}\\
+\implies x = A^{-1} \alpha\\
 \end{align}
-Now applying row reduction to the augmented matrix, we get:
+Now to get $A^{-1}$, we will consider Gauss-Jordon theorem. So, we will take $(A|I)$, where $I$ is a $3\times3$ identity matrix.
 \begin{multline}
-\myvec{1 & 0 & -1 & a\\0 & 1 & -1 & b\\1 & -2 & 0 & c}\xleftrightarrow[]{R_3\leftarrow R_3-R_1}\myvec{1 & 0 & -1 & a\\0 & 1 & -1 & b\\0 & -2 & 1 & c-a}\\
-\xleftrightarrow[]{R_3\leftarrow R_3+2R_2}\myvec{1 & 0 & -1 & a\\0 & 1 & -1 & b\\0 & 0 & -1 & c-a+2b}\\
-\xleftrightarrow[]{R_3\leftarrow R_3/(-1)}\myvec{1 & 0 & -1 & a\\0 & 1 & -1 & b\\0 & 0 & 1 & a-2b-c}\\
-\xleftrightarrow[R_1\leftarrow R_1+R_3]{R_2\leftarrow R_2+R_3}\myvec{1 & 0 & 0 & 2a-2b-c\\0 & 1 & 0 & a-b-c\\0 & 0 & 1 & a-2b-c}
+\myvec{1 & 0 & -1 & 1 & 0 & 0\\0 & 1 & -1 & 0 & 1 & 0\\1 & -2 & 0 & 0 & 0 & 1}\xleftrightarrow[]{R_3\leftarrow R_3-R_1}\\
+\myvec{1 & 0 & -1 & 1 & 0 & 0\\0 & 1 & -1 & 0 & 1 & 0\\0 & -2 & 1 & -1 & 0 & 1}
+\xleftrightarrow[]{R_3\leftarrow R_3+2R_2}\\
+\myvec{1 & 0 & -1 & 1 & 0 & 0\\0 & 1 & -1 & 0 & 1 & 0\\0 & 0 & -1 & -1 & 2 & 1}\xleftrightarrow[]{R_3\leftarrow R_3/(-1)}\\
+\myvec{1 & 0 & -1 & 1 & 0 & 0\\0 & 1 & -1 & 0 & 1 & 0\\0 & 0 & 1 & 1 & -2 & -1}\xleftrightarrow[R_1\leftarrow R_1+R_3]{R_2\leftarrow R_2+R_3}\\
+\myvec{1 & 0 & 0 & 2 & -2 & -1\\0 & 1 & 0 & 1 & -1 & -1\\0 & 0 & 1 & 1 & -2 & -1}
 \end{multline}
-Now,
+Now, we can say that
 \begin{align}
-\myvec{1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1}\myvec{x_1\\x_2\\x_3} = \myvec{2a-2b-c\\a-b-c\\a-2b-c}
+A^{-1} = \myvec{2 & -2 & -1\\1 & -1 & -1\\1 & -2 & -1}
+\end{align}
+As
+\begin{align}
+\vec{x} = A^{-1} \vec{\alpha}\\
+\implies \myvec{x_1\\x_2\\x_3}= A^{-1} \myvec{a\\b\\c}\\
+\implies \myvec{x_1\\x_2\\x_3}= \myvec{2 & -2 & -1\\1 & -1 & -1\\1 & -2 & -1} \myvec{a\\b\\c}
 \end{align}
 So, 
 \begin{align}
@@ -237,16 +246,18 @@ x_3= a-2b-c
 \end{align}
 Now, as $f$ is a linear functional on $R^3$,
 \begin{align}
-\alpha = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2\\
+\vec{\alpha} = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2\\
 \implies f(\alpha) = f(\alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2)\\
-\implies f(\alpha) = x_1 f(\alpha_1) + x_2f(\alpha_2)+ x_3f(\alpha_3)
+\implies f(\alpha) = x_1 f(\alpha_1) + x_2f(\alpha_2)+ x_3f(\alpha_3)\\
+\implies f(\alpha) = \myvec{x_1 & x_2 & x_3} \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}\\
+\implies f(\alpha) = \vec{x}^T \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}
 \end{align}
 As mentioned in the problem statement, $f(\alpha_1)=f(\alpha_2)=0$ and $f(\alpha_3)\neq 0$, so let us consider $f(\alpha_3)= k$ where $k$ is a scalar constant and $k \neq 0$.
 
 Now,
 \begin{align}
-f(\alpha) = x_1 f(\alpha_1) + x_2f(\alpha_2)+ x_3f(\alpha_3)\\
-\implies f(\alpha) = x_3f(\alpha_3)\\
+f(\alpha) = \vec{x}^T \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}\\
+\implies f(\alpha) = \myvec{x_1 & x_2 & x_3} \myvec{0\\0\\k}\\
 \implies f(\alpha) = x_3 k\\
 \implies f(\alpha) = k (a-2b-c)\\
 \implies f(a,b,c) = k (a-2b-c)
