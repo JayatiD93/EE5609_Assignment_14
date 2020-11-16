@@ -241,9 +241,16 @@ As
 So, 
 \begin{align}
 x_1 = 2a-2b-c\\
+\implies x_1 = \myvec{2 & -2 & -1}\myvec{a\\b\\c}\\
+\implies x_1 = \vec{B_1}^T \vec{\alpha}\\
 x_2= a-b-c \\
-x_3= a-2b-c
+\implies x_2 = \myvec{1 & -1 & -1}\myvec{a\\b\\c}\\
+\implies x_2 = \vec{B_2}^T \vec{\alpha}\\
+x_3= a-2b-c\\
+\implies x_3 = \myvec{1 & -2 & -1}\myvec{a\\b\\c}\\
+\implies x_3 = \vec{B_3}^T \vec{\alpha}
 \end{align}
+Where $B_1 = \myvec{2\\-2\\-1}$, $B_2 = \myvec{1\\-1\\-1}$ and $B_1 = \myvec{1\\-2\\-1}$
 Now, as $f$ is a linear functional on $R^3$,
 \begin{align}
 \vec{\alpha} = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2\\
@@ -252,37 +259,38 @@ Now, as $f$ is a linear functional on $R^3$,
 \implies f(\alpha) = \myvec{x_1 & x_2 & x_3} \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}\\
 \implies f(\alpha) = \vec{x}^T \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}
 \end{align}
-As mentioned in the problem statement, $f(\alpha_1)=f(\alpha_2)=0$ and $f(\alpha_3)\neq 0$, so let us consider $f(\alpha_3)= k$ where $k$ is a scalar constant and $k \neq 0$.
+As mentioned in the problem statement, $f(\alpha_1)=f(\alpha_2)=0$ and $f(\alpha_3)\neq 0$.
 
 Now,
 \begin{align}
 f(\alpha) = \vec{x}^T \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}\\
-\implies f(\alpha) = \myvec{x_1 & x_2 & x_3} \myvec{0\\0\\k}\\
-\implies f(\alpha) = x_3 k\\
-\implies f(\alpha) = k (a-2b-c)\\
-\implies f(a,b,c) = k (a-2b-c)
+\implies f(\alpha) = \myvec{x_1 & x_2 & x_3} \myvec{0\\0\\f(\alpha_3)}\\
+\implies f(\alpha) = x_3 f(\alpha_3)\\
+\implies f(\alpha) = f(\alpha_3) \vec{B_3}^T \vec{\alpha}\\
+\implies f(a,b,c) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{a\\b\\c}
 \end{align}
 So, the function can be defined as:
 \begin{align}
-f(x,y,z) = k (x-2y-z)
+f(x,y,z) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
+\textbf{or,} f(\vec{x}) = f(\alpha_3) \vec{B_3}^T \vec{x}
 \end{align}
 Using this defined function, it can be verified that:
 \begin{align}
-f(\alpha_1) = k (x-2y-z)\\
-\implies f(1,0,1)= k(1 - 2\times0 - 1)\\
+f(\alpha_1) =  f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
+\implies f(1,0,1)=f(\alpha_3) \myvec{1 & -2 & -1}\myvec{1\\0\\1}\\
 \implies f(1,0,1)= 0
 \end{align}
 Similarly,
 \begin{align}
-f(\alpha_2) = k (x-2y-z)\\
-\implies f(0,1,-2)= k(0 - 2\times1 + 2)\\
+f(\alpha_2) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
+\implies f(0,1,-2)= f(\alpha_3) \myvec{1 & -2 & -1}\myvec{0\\1\\-2}\\
 \implies f(0,1,-2)= 0
 \end{align}
 and 
 \begin{align}
-f(\alpha_3) = k (x-2y-z)\\
-\implies f(-1,-1,0)= k(-1 + 2 - 0)\\
-\implies f(-1,-1,0)= k \neq 0
+f(\alpha_3) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
+\implies f(-1,-1,0)= f(\alpha_3) \myvec{1 & -2 & -1}\myvec{-1\\-1\\0}\\
+\implies f(-1,-1,0)\neq 0
 \end{align}
 
 Hence, the above problem statement is verified.
