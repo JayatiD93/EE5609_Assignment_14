@@ -236,15 +236,9 @@ As
 \begin{align}
 \vec{x} = A^{-1} \vec{\alpha}\\
 \implies \myvec{x_1\\x_2\\x_3}= A^{-1} \myvec{a\\b\\c}\\
-\implies \myvec{x_1\\x_2\\x_3}= \myvec{2 & -2 & -1\\1 & -1 & -1\\1 & -2 & -1} \myvec{a\\b\\c}
+\implies \vec{x}= \myvec{2 & -2 & -1\\1 & -1 & -1\\1 & -2 & -1} \myvec{a\\b\\c}
 \end{align}
-Now, let us consider $B_1 = \myvec{2\\-2\\-1}$, $B_2 = \myvec{1\\-1\\-1}$ and $B_3 = \myvec{1\\-2\\-1}$ and $\vec{\alpha} = \myvec{a\\b\\c}$.
-So, 
-\begin{align}
-x_1 = \vec{B_1}^T \vec{\alpha}\\
-x_2 = \vec{B_2}^T \vec{\alpha}\\
-x_3 = \vec{B_3}^T \vec{\alpha}
-\end{align}
+
 Now, as $f$ is a linear functional on $R^3$,
 \begin{align}
 \vec{\alpha} = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2\\
@@ -258,36 +252,16 @@ As mentioned in the problem statement, $f(\alpha_1)=f(\alpha_2)=0$ and $f(\alpha
 Now,
 \begin{align}
 f(\alpha) = \vec{x}^T \myvec{f(\alpha_1)\\f(\alpha_2)\\f(\alpha_3)}\\
-\implies f(\alpha) = \myvec{x_1 & x_2 & x_3} \myvec{0\\0\\f(\alpha_3)}\\
-\implies f(\alpha) = x_3 f(\alpha_3)\\
-\implies f(\alpha) = f(\alpha_3) \vec{B_3}^T \vec{\alpha}\\
-\implies f(a,b,c) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{a\\b\\c}
+\implies f(\alpha) =  \vec{x}^T \myvec{0\\0\\f(\alpha_3)}\\
+\implies f(\alpha) = \myvec{a\\b\\c}^T \myvec{2 & 1 & 1\\-2 & -1 & -2\\-1 & -1 & -1} \myvec{0\\0\\f(\alpha_3)}\\
+\implies f(\alpha) = \myvec{a\\b\\c}^T \myvec{f(\alpha_3)\\-2f(\alpha_3)\\-f(\alpha_3)}\\
+\implies f(a,b,c) = f(\alpha_3) \myvec{a\\b\\c}^T \myvec{1\\-2\\-1}
 \end{align}
 So, the function can be defined as:
 \begin{align}
-f(x,y,z) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
-\textbf{or,} f(\vec{x}) = f(\alpha_3) \vec{B_3}^T \vec{x}
+f(a,b,c) = f(\alpha_3) \myvec{a\\b\\c}^T \myvec{1\\-2\\-1}\\
+\textbf{or,} f(\vec{\alpha}) = f(\alpha_3) (a-2b-c)
 \end{align}
-Using this defined function, it can be verified that:
-\begin{align}
-f(\alpha_1) =  f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
-\implies f(1,0,1)=f(\alpha_3) \myvec{1 & -2 & -1}\myvec{1\\0\\1}\\
-\implies f(1,0,1)= 0
-\end{align}
-Similarly,
-\begin{align}
-f(\alpha_2) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
-\implies f(0,1,-2)= f(\alpha_3) \myvec{1 & -2 & -1}\myvec{0\\1\\-2}\\
-\implies f(0,1,-2)= 0
-\end{align}
-and 
-\begin{align}
-f(\alpha_3) = f(\alpha_3) \myvec{1 & -2 & -1}\myvec{x\\y\\z}\\
-\implies f(-1,-1,0)= f(\alpha_3) \myvec{1 & -2 & -1}\myvec{-1\\-1\\0}\\
-\implies f(-1,-1,0)\neq 0
-\end{align}
-
-Hence, the above problem statement is verified.
 %\renewcommand{\theequation}{\theenumi}
 %\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
 %\numberwithin{equation}{enumi}
