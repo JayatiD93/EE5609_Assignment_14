@@ -238,19 +238,13 @@ As
 \implies \myvec{x_1\\x_2\\x_3}= A^{-1} \myvec{a\\b\\c}\\
 \implies \myvec{x_1\\x_2\\x_3}= \myvec{2 & -2 & -1\\1 & -1 & -1\\1 & -2 & -1} \myvec{a\\b\\c}
 \end{align}
+Now, let us consider $B_1 = \myvec{2\\-2\\-1}$, $B_2 = \myvec{1\\-1\\-1}$ and $B_3 = \myvec{1\\-2\\-1}$ and $\vec{\alpha} = \myvec{a\\b\\c}$.
 So, 
 \begin{align}
-x_1 = 2a-2b-c\\
-\implies x_1 = \myvec{2 & -2 & -1}\myvec{a\\b\\c}\\
-\implies x_1 = \vec{B_1}^T \vec{\alpha}\\
-x_2= a-b-c \\
-\implies x_2 = \myvec{1 & -1 & -1}\myvec{a\\b\\c}\\
-\implies x_2 = \vec{B_2}^T \vec{\alpha}\\
-x_3= a-2b-c\\
-\implies x_3 = \myvec{1 & -2 & -1}\myvec{a\\b\\c}\\
-\implies x_3 = \vec{B_3}^T \vec{\alpha}
+x_1 = \vec{B_1}^T \vec{\alpha}\\
+x_2 = \vec{B_2}^T \vec{\alpha}\\
+x_3 = \vec{B_3}^T \vec{\alpha}
 \end{align}
-Where $B_1 = \myvec{2\\-2\\-1}$, $B_2 = \myvec{1\\-1\\-1}$ and $B_1 = \myvec{1\\-2\\-1}$
 Now, as $f$ is a linear functional on $R^3$,
 \begin{align}
 \vec{\alpha} = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_2 x_2\\
